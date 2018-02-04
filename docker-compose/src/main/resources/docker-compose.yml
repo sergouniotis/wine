@@ -1,0 +1,29 @@
+version: '3'
+services:
+  winedb:
+    container_name: winedb
+    image: postgres:9.5
+    ports:
+    - 5432:5432
+    environment:
+    - POSTGRES_USER=wine
+    - POSTGRES_PASSWORD=wine
+    networks:
+    - core_net
+  javaeecore:
+    container_name: core
+    image: tsergouniotis/javaee-docker
+    ports:
+    - 8080:8080
+    - 8787:8787
+    depends_on:
+    - winedb
+    environment:
+    - debug=true
+    env_file:
+    - dev.env
+    networks:
+    - core_net
+networks:
+  core_net:
+    driver: bridge

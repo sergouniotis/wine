@@ -1,0 +1,86 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="malicAcid">
+      <mat-header-cell *matHeaderCellDef> malicAcid </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.malicAcid}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ash">
+      <mat-header-cell *matHeaderCellDef> ash </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ash}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="alcalinityOfAsh">
+      <mat-header-cell *matHeaderCellDef> alcalinityOfAsh </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.alcalinityOfAsh}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="magnesium">
+      <mat-header-cell *matHeaderCellDef> magnesium </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.magnesium}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="phenols">
+      <mat-header-cell *matHeaderCellDef> phenols </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.phenols}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="flavanoids">
+      <mat-header-cell *matHeaderCellDef> flavanoids </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.flavanoids}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nonFlavanoidsPhenols">
+      <mat-header-cell *matHeaderCellDef> nonFlavanoidsPhenols </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nonFlavanoidsPhenols}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="proanthocyanins">
+      <mat-header-cell *matHeaderCellDef> proanthocyanins </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.proanthocyanins}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="colorIntensity">
+      <mat-header-cell *matHeaderCellDef> colorIntensity </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.colorIntensity}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="hue">
+      <mat-header-cell *matHeaderCellDef> hue </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.hue}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="region">
+      <mat-header-cell *matHeaderCellDef> region </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.region}} </mat-cell>
+    </ng-container>        
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <mat-paginator #paginator
+                [length]="wineDatabase.data.length"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+</div>
