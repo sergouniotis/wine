@@ -5,7 +5,7 @@ batch
 /subsystem=undertow/configuration=filter/response-header=cors-allowed-headers-header/:add(header-name=Access-Control-Allow-Headers,header-value="X-requested-with, Content-Type, Origin, Authorization, Accept")
 /subsystem=undertow/configuration=filter/response-header=cors-allowed-origin/:add(header-name=Access-Control-Allow-Origin,header-value=*)
 /subsystem=undertow/configuration=filter/response-header=cors-allowed-methods/:add(header-name=Access-Control-Allow-Methods,header-value="GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH")
-/subsystem=undertow/configuration=filter/response-header=cors-expose-headers/:add(header-name=Access-Control-Expose-Headers,header-value="Flavors, MinTemp, MaxTemp, MinEthanol, MaxEthanol, MinAcidity, MaxAcidity, MinDuration, MaxDuration")
+/subsystem=undertow/configuration=filter/response-header=cors-expose-headers/:add(header-name=Access-Control-Expose-Headers,header-value="CustomHeader")
 
 /subsystem=undertow/server=default-server/host=default-host/filter-ref=cors-allowed-headers-header/:add(priority=1)
 /subsystem=undertow/server=default-server/host=default-host/filter-ref=cors-allowed-origin/:add(priority=1)
@@ -31,7 +31,7 @@ data-source add --jndi-name=java:jboss/wine/jdbc/ds --name=WineDBPool --connecti
 /subsystem=ee:write-attribute(name="global-modules",value=[{"name" => "com.fasterxml.jackson.datatype.jackson-datatype-jsr310","slot" => "main"}])
   
 #create the queue
-/subsystem=messaging-activemq/server=default/jms-queue=OEDesignQueue:add(entries=[java:/jms/queue/OEDesignQueue])
+/subsystem=messaging-activemq/server=default/jms-queue=WineQueue:add(entries=[java:/jms/queue/WineQueue])
 
 deploy /opt/javaee-core.war
 
